@@ -6,7 +6,7 @@ CXXFLAGS = -std=c++17 --offload-arch=gfx942
 
 # Target
 TARGET = fp16_tensor_core_tflops
-SRC = fp16_tensor_core_tflops.cpp
+SRC = fp16_flops.cpp
 
 # Default rule
 all: $(TARGET)

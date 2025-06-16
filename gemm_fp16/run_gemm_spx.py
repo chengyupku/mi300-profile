@@ -9,7 +9,7 @@ M, K, N = 16384, 16384, 16384
 
 # Number of runs to average
 num_warmup = 10
-num_iter = 10
+num_iter = 100
 
 # Generate input matrices
 A = torch.randn(M, K, device=device, dtype=torch.float16)
@@ -20,16 +20,14 @@ for _ in range(num_warmup):
     torch.matmul(A, B)
 
 torch.cuda.synchronize()
-times = []
+start = time.time()
 
 for _ in range(num_iter):
-    start = time.time()
     C = torch.matmul(A, B)
-    torch.cuda.synchronize()
-    end = time.time()
-    times.append(end - start)
 
-avg_time = sum(times) / num_iter
+torch.cuda.synchronize()
+end = time.time()
+avg_time = (end - start) / num_iter
 
 # Compute TFLOPS: (2 * M * K * N) / (time * 1e12)
 tflops = (2 * M * K * N) / (avg_time * 1e12)
