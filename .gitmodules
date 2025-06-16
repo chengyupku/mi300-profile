@@ -1,0 +1,6 @@
+[submodule "rocm_bandwidth_test"]
+	path = rocm_bandwidth_test
+	url = git@github.com:ROCm/rocm_bandwidth_test.git
+[submodule "3rdparty/rocm_bandwidth_test"]
+	path = 3rdparty/rocm_bandwidth_test
+	url = git@github.com:ROCm/rocm_bandwidth_test.git
